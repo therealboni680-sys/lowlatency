@@ -1,0 +1,63 @@
+{
+	"geode": "5.11.2",
+	"gd": {
+		"win": "2.2081"
+	},
+	"id": "cesar.lowlatency",
+	"name": "Low Latency Tweaks",
+	"version": "v1.0.0",
+	"developer": "Cesar",
+	"description": "Menos input lag y mas FPS: apaga VSync, fija un limite de FPS alto y ajusta prioridad y temporizador de Windows.",
+	"settings": {
+		"disable-vsync": {
+			"type": "bool",
+			"name": "Desactivar VSync",
+			"description": "Apaga la sincronizacion vertical (principal causa de input lag). Se aplica al iniciar y al cambiar el ajuste. El interruptor del juego puede seguir mostrandose activado.",
+			"default": true
+		},
+		"fps-override": {
+			"type": "bool",
+			"name": "Forzar limite de FPS",
+			"description": "Usa el limite de FPS de abajo en lugar del que tenga el juego.",
+			"default": true
+		},
+		"fps-cap": {
+			"type": "int",
+			"name": "Limite de FPS",
+			"description": "Recomendado: 2 a 3 veces los Hz de tu monitor. Mas FPS = menos latencia, pero mas uso de CPU/GPU.",
+			"default": 360,
+			"min": 30,
+			"max": 1000,
+			"control": {
+				"arrows": true,
+				"slider": true,
+				"input": true
+			},
+			"enable-if": "fps-override"
+		},
+		"high-priority": {
+			"type": "bool",
+			"name": "Prioridad alta del proceso",
+			"description": "Pone Geometry Dash en prioridad alta de CPU.",
+			"default": true
+		},
+		"disable-throttling": {
+			"type": "bool",
+			"name": "Evitar ahorro de energia",
+			"description": "Impide que Windows limite la velocidad de CPU del juego (EcoQoS).",
+			"default": true
+		},
+		"timer-resolution": {
+			"type": "bool",
+			"name": "Temporizador de 1 ms",
+			"description": "Pide a Windows precision de 1 ms en los temporizadores. Efecto pequeno pero gratis.",
+			"default": true
+		},
+		"gl-finish": {
+			"type": "bool",
+			"name": "Esperar a la GPU cada frame",
+			"description": "Experimental. Llama a glFinish tras cada frame para reducir la cola de la GPU (menos input lag) a costa de algo de FPS. Prueba con y sin.",
+			"default": false
+		}
+	}
+}
